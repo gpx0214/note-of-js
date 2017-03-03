@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<!-- saved from url=(0014)about:internet -->
+<head>
+<title>自动刷人人网页rp.htm</title>
+<!--meta http-equiv="refresh" content=200 /--><!--页面自动刷新 单位s-->
+
+</head>
+<body>
+<script>
+function rp(){
+//clearTimeout(this.tId);
+var that=this;
+w=window.open("http://www.renren.com");
+w.window.moveTo(10,10);
+w.window.resizeTo(400,300);
+window.setTimeout(function(){w.close();},10000);
+
+time=1810000;																//原定刷新时间毫秒  比正常值略多
+remain=86400000-(new Date().getTime()-new Date().getTimezoneOffset()*60000)%86400000;	//换算当地时间 计算剩余毫秒数 数值为重新计时周期毫秒
+if(remain < 1770000)														//刷新时间限制  比正常值略少
+{
+time=remain+10000;															//加上的时间为计算机时钟误差余量
+};
+document.write(remain+" "+new Date().toString()+"<br />");						//test 输出剩余毫秒数+当地时间字符
+
+this.tId=window.setTimeout('rp()',time);
+}
+window.onload=rp();
+</script>
+</body>
+</html>
